@@ -51,3 +51,12 @@ Cx = cov(x_m');
 %autovalores y autovectores
 
 [avec, avas] = eig(Cx);
+
+% d) Primera parte, matriz Y_m
+
+y_m = avec' * x_m;
+Cy = cov(y_m');
+
+% Define matriz y_m como Y = V' X
+% V siendo la matriz de autovectores
+% y cuyo resultado es la matriz de avas
