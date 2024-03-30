@@ -47,7 +47,7 @@ hold off
 nexttile(6,[2 1])
 hold on
 grid on
-ylabel('x_1');
+xlabel('x_1');
 xlabel('f_{x_1}(x_1)');
 title('Histograma de X_1')
 histogram(x_m(2, :), 50, 'Normalization', 'probability', 'orientation', 'horizontal');
@@ -93,7 +93,7 @@ hold off
 nexttile(6, [2,1])
 hold on
 grid on
-ylabel('y_1');
-xlabel('f_{y_1}(y_1)');
+xlabel('y_1');
+ylabel('f_{y_1}(y_1)');
 title('Histograma de Y_1')
 histogram(y_m(2, :), 50, 'Normalization', 'probability', 'orientation', 'horizontal');
