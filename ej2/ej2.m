@@ -7,7 +7,7 @@ sign_norm = data / (rms(data));
 L = 1323;
 columnas = ceil(length(sign_norm) / L);
 
-CR = 70; %compression rate
+CR = 95; %compression rate
 K = ceil((1 - CR/100) * L); %cantidad de componentes principales
 
 x_m = zeros(L, columnas);
@@ -39,7 +39,7 @@ V = avec(:, ind);
 
 %defino la matriz U con K autovectores
 
-U = avec(:, 1:K);
+U = V(:, 1:K);
 
 %obtengo la coleccion Y_m 
 Y_m = U' * x_m;
@@ -54,5 +54,10 @@ for i = 1:L
    x_r((i-1)*columnas+1:i*columnas) = X_m(i, :); 
 end
 
-sound(x_r, fs);
-sound(sign_norm);
+x_r_norm = x_r / (max(x_r));
+
+audiowrite("Audios_comprimidos/audio_01_2024a_CR95.wav", x_r, fs);
+audiowrite("Audios_comprimidos/audio_01_2024a_CR95_norm.wav", x_r_norm, fs);
+
+% sound(x_r, fs);
+% sound(sign_norm);
