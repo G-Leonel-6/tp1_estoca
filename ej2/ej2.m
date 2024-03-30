@@ -54,4 +54,5 @@ for i = 1:L
    x_r((i-1)*columnas+1:i*columnas) = X_m(i, :); 
 end
 
+sound(x_r, fs);
 sound(sign_norm);
