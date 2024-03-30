@@ -1,5 +1,3 @@
-clear all
-
 %ejercicio 1
 % a) segmentacion del audio
 
@@ -20,7 +18,8 @@ while j <= columnas + 1
         x_m(i, j) = sign_norm(iter)/columnas;
         iter = iter + 1;
         i = i + 1;
-
+    end
+end
 
 % b) grafico de dispersion de x_m
 figure();
