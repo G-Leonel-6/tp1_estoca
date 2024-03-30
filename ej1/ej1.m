@@ -2,10 +2,10 @@
 % a) segmentacion del audio
 
 
-[data, fs] = audioread('audio_01_2024a.wav');
+[data, fs] = audioread('../Archivos/audio_01_2024a.wav');
 sign_norm = data / (rms(data));
 L = 2;
-columnas = ceil(length(sign_norm) / 2);
+columnas = ceil(length(sign_norm) / L);
 
 x_m = zeros(L, columnas);
 
@@ -19,7 +19,7 @@ for i=1:L
     end
 end
 
-x_m(2, end-1)
+x_m(end, end-1)
 sign_norm(end)
 
 % b) grafico de dispersion de x_m

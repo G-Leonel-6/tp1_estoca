@@ -1,16 +1,10 @@
 clear all
 clc
 
-pkg load optim
-pkg load miscellaneous
-pkg load statistics
-pkg load signal
-
-
 %ejercicio 1
 % a) segmentacion del audio
 
-[data, fs] = audioread('audio_02_2024a.wav');
+[data, fs] = audioread('../Archivos/audio_02_2024a.wav');
 data_norm = data / (rms(data));
 
 data_norm = transpose(data_norm);
@@ -18,20 +12,20 @@ data_norm = transpose(data_norm);
 L = 1323;
 j = 0; %necesario si queremos dividir los 0
 
-while mod(length(data_norm), L) != 0
-  j += 1;
-  if mod(j,2) != 0
+while mod(length(data_norm), L) ~= 0
+  j = j+1;
+  if mod(j,2) ~= 0
     data_norm = [0 data_norm];
   else
    data_norm = [data_norm 0];
-   endif
-endwhile
+  end
+end
 
 columnas = length(data_norm) / L;
 
 for i = 1:L
   x_m(i,:) = data_norm((i-1)*columnas+1:i*columnas);
-endfor
+end
 
 
 % c) matriz de covarianza 
@@ -60,14 +54,14 @@ K = floor((1 - (CR/100))*L); %cantidad de maximos deseados
 
 for i = 1:length(avas(1,:))
   avaVector(i) = avas(i,i);
-endfor
+end
 
 for i = 1:K
   [avaMax(i),indMax(i)] = max(avaVector);
   avaVector(indMax(i)) = 0;
   matrizKAsoc(i,:) = avec(indMax(i),:);
   matrizK(i,i) = avaMax(i);
-endfor
+end
 %Obtengo los indices de los K maximos con ellos armo
 %la matriz diagonal K, cuyos elementos de la diagonal
 %son los avas de Cx ordenados de mayor a menor y
