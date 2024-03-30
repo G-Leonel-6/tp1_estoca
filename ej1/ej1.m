@@ -1,3 +1,5 @@
+clear all
+
 %ejercicio 1
 % a) segmentacion del audio
 
@@ -9,6 +11,7 @@ columnas = ceil(length(sign_norm) / L);
 
 x_m = zeros(L, columnas);
 
+
 j = 1;
 i = 1;
 iter = 1;
@@ -17,10 +20,7 @@ while j <= columnas + 1
         x_m(i, j) = sign_norm(iter)/columnas;
         iter = iter + 1;
         i = i + 1;
-    end
-    i = 1;
-    j = j + 1;
-end
+
 
 % b) grafico de dispersion de x_m
 figure();
@@ -66,6 +66,8 @@ cx = cov(x_m');
 %defino la matriz Y = U^T * X
 
 y_m = avec' * x_m;
+
+cy = cov(y_m');
 
 
 % b) grafico de dispersion de y_m

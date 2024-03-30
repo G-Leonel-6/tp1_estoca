@@ -9,6 +9,7 @@ columnas = ceil(length(sign_norm) / L);
 
 x_m = zeros(L, columnas);
 
+<<<<<<< HEAD
 j = 1;
 i = 1;
 iter = 1;
@@ -52,12 +53,44 @@ xlabel('f_{x_1}(x_1)');
 title('Histograma de X_1')
 histogram(x_m(2, :), 50, 'Normalization', 'probability', 'orientation', 'horizontal');
 hold off
+=======
+for i=1:columnas
+    for j = 1:columnas
+        if((i-1)*columnas+j > length(sign_norm))
+            break;
+        end
+        
+        x_m(i, j) = sign_norm((i-1)*columnas+j);
+    end
+end
+
+x_m(end, end-1)
+sign_norm(end)
+
+% b) grafico de dispersion de x_m
+figure();
+tiledlayout(1,3);
+
+nexttile
+histogram(x_m(1, :), 50);
+
+nexttile
+scatter(x_m(1, :), x_m(2, :))
+
+nexttile
+histogram(x_m(2, :), 50);
+
+>>>>>>> f1d9b0b19080a52ed2b8323b3fc065b4b9051e12
 % c) matriz de covarianza 
 
 %calculo la esperanza de x_m
 mu_x = mean(transpose(x_m));
 
+<<<<<<< HEAD
 cx = cov(x_m');
+=======
+cx = cov(x_m')
+>>>>>>> f1d9b0b19080a52ed2b8323b3fc065b4b9051e12
 
 %autovalores y autovectores
 
@@ -70,6 +103,7 @@ y_m = avec' * x_m;
 
 % b) grafico de dispersion de y_m
 figure();
+<<<<<<< HEAD
 tiledlayout(3,3);
 
 nexttile([1, 2])
@@ -97,3 +131,15 @@ xlabel('y_1');
 ylabel('f_{y_1}(y_1)');
 title('Histograma de Y_1')
 histogram(y_m(2, :), 50, 'Normalization', 'probability', 'orientation', 'horizontal');
+=======
+tiledlayout(1,3);
+
+nexttile
+histogram(y_m(1, :), 50);
+
+nexttile
+scatter(y_m(1, :), x_m(2, :))
+
+nexttile
+histogram(y_m(2, :), 50);
+>>>>>>> f1d9b0b19080a52ed2b8323b3fc065b4b9051e12
