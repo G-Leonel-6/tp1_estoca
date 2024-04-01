@@ -202,8 +202,14 @@ for i=1:length(CR3)
     
 end
 
-plot(CR1, MSE1, "r");
+figure
+plot(CR1, MSE1, 'r-', 'LineWidth', 1, 'DisplayName', 'Audio 1')
 hold on
-plot(CR2, MSE2, "b");
-plot(CR3, MSE3, "g");
-legend("Audio 1", "Audio 2", "Audio 2");
+title('CR vs MSE')
+plot(CR2, MSE2, 'g-', 'LineWidth', 1, 'DisplayName', 'Audio 2')
+plot(CR3, MSE3, 'b-', 'LineWidth', 1, 'DisplayName', 'Audio 3')
+grid on
+xlabel('CR(%)')
+ylabel('MSE')
+hold off
+legend('Location', 'NorthWest')

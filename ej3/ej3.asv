@@ -190,7 +190,7 @@ for i=1:length(CR3)
     x_r = zeros([1 L*columnas]);
 
     for j = 1:columnas
-       x_r((j-1)*L+1:j*L) = X_m(, :); 
+       x_r((j-1)*L+1:j*L) = X_m(:, j); 
     end
     
     %normalizo la señal
@@ -202,8 +202,12 @@ for i=1:length(CR3)
     
 end
 
-plot(CR1, MSE1, "r");
+
 hold on
+plot(CR1, MSE1, "r");
 plot(CR2, MSE2, "b");
 plot(CR3, MSE3, "g");
-legend("Audio 1", "Audio 2", "Audio 2");
+legend('Audio 1', 'Audio 2', 'Audio 3', 'Location', 'NorthWest');
+grid on
+xlabel('CR');
+ylabel('MSE');
