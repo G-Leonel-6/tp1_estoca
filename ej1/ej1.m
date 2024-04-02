@@ -33,7 +33,7 @@ grid on
 xlabel('x_0');
 ylabel('f_{x_0}(x_0)');
 title('Histograma de X_0');
-histogram(x_m(1, :), 50, 'Normalization', 'probability');
+histogram(x_m(1, :), 50, 'Normalization', 'pdf');
 hold off
 
 nexttile([2 2])
@@ -51,7 +51,7 @@ grid on
 ylabel('x_1');
 xlabel('f_{x_1}(x_1)');
 title('Histograma de X_1')
-histogram(x_m(2, :), 50, 'Normalization', 'probability', 'orientation', 'horizontal');
+histogram(x_m(2, :), 50, 'Normalization', 'pdf', 'orientation', 'horizontal');
 hold off
 % c) matriz de covarianza 
 
@@ -81,7 +81,7 @@ xlabel('y_0');
 ylabel('f_{y_0}(y_0)');
 title('Histograma de Y_0')
 grid on
-histogram(y_m(1, :), 50,  'Normalization', 'probability');
+histogram(y_m(1, :), 50,  'Normalization', 'pdf');
 hold off
 
 nexttile([2,2])
@@ -99,4 +99,4 @@ grid on
 ylabel('y_1');
 xlabel('f_{y_1}(y_1)');
 title('Histograma de Y_1')
-histogram(y_m(2, :), 50, 'Normalization', 'probability', 'orientation', 'horizontal');
+histogram(y_m(2, :), 50, 'Normalization', 'pdf', 'orientation', 'horizontal');
