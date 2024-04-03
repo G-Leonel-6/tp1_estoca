@@ -101,7 +101,7 @@ title('Dispersión de Y_0 e Y_1');
 scatter(y_m(1, :), y_m(2, :))
 hold off
 
-%histograma de Y_1 normalizado
+%histograma de Y_1 
 nexttile(6, [2,1])
 hold on
 grid on

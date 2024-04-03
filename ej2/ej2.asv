@@ -3,9 +3,9 @@ clear all
 % a) segmentacion del audio
 
 [data, fs] = audioread('../Archivos/audio_02_2024a.wav');
-data_norm = data / (rms(data));
+sign_norm = data / (rms(data));
 L = 1323;
-columnas = ceil(length(data_norm) / L);
+columnas = ceil(length(sign_norm) / L);
 
 CR = [70 90 95]; %compression rate
 
@@ -14,11 +14,11 @@ x_m = zeros(L, columnas);
 
 for i=1:columnas
     for j = 1:L
-        if((i-1)*L+j > length(data_norm))
+        if((i-1)*L+j > length(sign_norm))
             break;
         end
         
-        x_m(j, i) = data_norm((i-1)*L+j);
+        x_m(j, i) = sign_norm((i-1)*L+j);
     end
 end
 
@@ -37,7 +37,7 @@ cx = cov(x_m');
 D = avas(ind, ind);
 V = avec(:, ind);
 
-x_r = zeros([3 L*columnas]); %cada fila de esta matriz corresponde al audio comprimido con los diferentes valores de CR
+x_r = zeros([3 L*columnas]);
 
 %defino la matriz U con K autovectores
 for k = 1:length(CR)
@@ -47,7 +47,7 @@ for k = 1:length(CR)
     %obtengo la coleccion Y_m 
     Y_m = U' * x_m;
 
-    %reconstruccion del audio
+    %b) reconstruccion del audio
 
     X_m = U * Y_m;
 
@@ -59,6 +59,8 @@ for k = 1:length(CR)
 
 end
 
-audiowrite("Audios_comprimidos/audio_02_2024a_CR70.wav", x_r(1,:), fs);
-audiowrite("Audios_comprimidos/audio_02_2024a_CR90.wav", x_r(2,:), fs);
-audiowrite("Audios_comprimidos/audio_02_2024a_CR95.wav", x_r(3,:), fs);
+audiowrite("Audios_comprimidos/audio_02_2024a_CR95.wav", x_r, fs);
+
+
+% sound(x_r, fs);
+% sound(sign_norm);
